@@ -1,0 +1,57 @@
+<div *ngIf="isRegister; else isLogin">
+  <form class="auth_form">
+    <div class="auth_form__form_field_group">
+      <mat-form-field  appearance="outline">
+        <mat-label>First name</mat-label>
+        <input matInput type="text">
+      </mat-form-field>
+    </div>
+    <div class="auth_form__form_field_group">
+      <mat-form-field  appearance="outline">
+        <mat-label>Last name</mat-label>
+        <input matInput type="text">
+      </mat-form-field>
+    </div>
+    <div class="auth_form__form_field_group">
+      <mat-form-field class="auth_form__form_field_group__form_field"  appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="text">
+      </mat-form-field>
+      <mat-form-field  class="auth_form__form_field_group__form_field" appearance="outline">
+        <mat-label>Confirm password</mat-label>
+        <input matInput type="text">
+      </mat-form-field>
+    </div>
+    <div class="auth_form__form_field_group">
+      <mat-form-field  appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input matInput type="text">
+      </mat-form-field>
+    </div>
+    <div class="auth_form__form_field_group">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="text">
+      </mat-form-field>
+    </div>
+    <small class="auth_form__small">Already have an account? Please <a routerLink="/auth/login">log in</a></small>
+  </form>
+</div>
+
+<ng-template #isLogin>
+  <form class="auth_form">
+    <div class="auth_form__form_field_group">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="text">
+      </mat-form-field>
+    </div>
+    <div class="auth_form__form_field_group">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="text">
+      </mat-form-field>
+    </div>
+    <small class="auth_form__small">Don't have an account? Go to <a routerLink="/auth/register">register</a> page</small>
+  </form>
+</ng-template>
