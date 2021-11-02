@@ -1,41 +1,41 @@
-<form class="auth_form" [formGroup]="form" (ngSubmit)="handleRegistration()">
-  <div class="auth_form__form_field_group">
+<form class="registration_form" [formGroup]="form" (ngSubmit)="handleRegistration()">
+  <div class="registration_form__form_field_group">
     <mat-form-field appearance="outline">
       <mat-label>First name</mat-label>
       <input matInput type="text" formControlName="first_name">
     </mat-form-field>
   </div>
-  <div class="auth_form__form_field_group">
+  <div class="registration_form__form_field_group">
     <mat-form-field appearance="outline">
       <mat-label>Last name</mat-label>
       <input matInput type="text" formControlName="last_name">
     </mat-form-field>
   </div>
-  <div class="auth_form__form_field_group">
-    <mat-form-field class="auth_form__form_field_group__form_field" appearance="outline">
+  <div class="registration_form__form_field_group">
+    <mat-form-field class="registration_form__form_field_group__form_field" appearance="outline">
       <mat-label>Password</mat-label>
       <input matInput type="text" formControlName="password">
     </mat-form-field>
-    <mat-form-field class="auth_form__form_field_group__form_field" appearance="outline">
+    <mat-form-field class="registration_form__form_field_group__form_field" appearance="outline">
       <mat-label>Confirm password</mat-label>
       <input matInput type="text" formControlName="password_confirm">
     </mat-form-field>
   </div>
-  <div class="auth_form__form_field_group">
+  <div class="registration_form__form_field_group">
     <mat-form-field appearance="outline">
       <mat-label>Phone</mat-label>
       <input matInput type="text" formControlName="phone">
     </mat-form-field>
   </div>
-  <div class="auth_form__form_field_group">
+  <div class="registration_form__form_field_group">
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
       <input matInput type="text" formControlName="email">
     </mat-form-field>
   </div>
-  <div class="auth_form__btn">
+  <div class="registration_form__btn">
     <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Register</button>
   </div>
-  <small class="auth_form__small">Already have an account? Please <a routerLink="/auth/login">log in</a></small>
+  <small class="registration_form__small">Already have an account? Please <a routerLink="/auth/login">log in</a></small>
 </form>
 

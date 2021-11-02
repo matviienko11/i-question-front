@@ -1,1 +1,18 @@
-<p>login-form works!</p>
+<form class="login_form" [formGroup]="form" (ngSubmit)="handleLogin()">
+  <div class="login_form__form_field_group">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="text" formControlName="email">
+    </mat-form-field>
+  </div>
+  <div class="login_form__form_field_group">
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput type="text" formControlName="password">
+    </mat-form-field>
+  </div>
+  <div class="login_form__btn">
+    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Log in</button>
+  </div>
+  <small class="login_form__small">Don't have an account? Please <a routerLink="/auth/register">register</a></small>
+</form>
