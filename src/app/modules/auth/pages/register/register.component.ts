@@ -5,11 +5,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./register.component.scss'],
   template: `
     <div class="register_page">
-      <app-auth-from [isRegister]="true"></app-auth-from>
+      <app-registration-form></app-registration-form>
     </div>
   `,
-
 })
-export class RegisterComponent {
 
+export class RegisterComponent {
 }

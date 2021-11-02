@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.components.scss'],
   template: `
     <div class="login_page">
-      <app-auth-from></app-auth-from>
+      <app-login-form></app-login-form>
     </div>
   `,
 })

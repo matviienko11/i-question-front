@@ -25,6 +25,9 @@
     position: absolute;
     bottom: 20px;
   }
+  &__btn {
+    margin-bottom: 30px;
+  }
 
   ::ng-deep .mat-form-field {
     width: 100%;
