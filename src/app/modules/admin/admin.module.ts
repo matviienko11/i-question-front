@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatTabsModule } from '@angular/material/tabs';
+
 import { AdminRoutingModule } from './admin-routing.module';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AdminComponent } from './admin.component';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatTabsModule } from '@angular/material/tabs';
+import { AdminStateModule } from '../../root-store/admin/admin-state.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     CommonModule,
     AdminRoutingModule,
     MatButtonToggleModule,
-    MatTabsModule
+    MatTabsModule,
+    AdminStateModule
   ]
 })
-export class AdminModule { }
+export class AdminModule {
+}
