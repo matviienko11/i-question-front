@@ -1,0 +1,25 @@
+.user_page {
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__form {
+    width: 70%;
+    border: solid 1px black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    &__group {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      &__item {
+        width: 45% !important;
+      }
+    }
+  }
+}

@@ -12,4 +12,8 @@ export class UsersService {
   getAllUsers() {
     return this.http.get(environment.BASIC_URL + '/users')
   }
+
+  getOneUser(id: any) {
+    return this.http.get(environment.BASIC_URL + `/users/${id}`)
+  }
 }
