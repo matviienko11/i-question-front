@@ -1,0 +1,10 @@
+.questions_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__question_card {
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+  }
+}

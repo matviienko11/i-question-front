@@ -1,1 +1,6 @@
-<p>questions works!</p>
+<div class="questions_wrapper">
+  <div *ngFor="let question of questions$ | async">
+    <mat-card class="questions_wrapper__question_card">{{question.question}}</mat-card>
+  </div>
+</div>
+
