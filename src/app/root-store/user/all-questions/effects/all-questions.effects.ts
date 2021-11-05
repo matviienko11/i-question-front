@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
+
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { UsersService } from '../../../modules/admin/modules/users/services/users.service';
-import { QuestionsService } from '../../../modules/user/modules/questions/services/questions.service';
-import { GetAllQuestions, GetAllQuestionsFailure, GetAllQuestionsSuccess } from '../actions/user.actions';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
+import { QuestionsService } from '../../../../modules/user/modules/questions/services/questions.service';
+import { GetAllQuestions, GetAllQuestionsFailure, GetAllQuestionsSuccess } from '../actions/all-questions.actions';
+
 @Injectable()
-export class UserEffects {
+export class AllQuestionsEffects {
   constructor(private actions$: Actions,
               private questionsService: QuestionsService) {
   }
@@ -17,7 +18,7 @@ export class UserEffects {
       ofType(GetAllQuestions),
       switchMap(() => this.questionsService.getAllQuestions()
         .pipe(
-          map((all_questions) => GetAllQuestionsSuccess({ all_questions })),
+          map((questions) => GetAllQuestionsSuccess({ questions })),
           catchError(error => of(GetAllQuestionsFailure({ error })))
         ))
     )

@@ -1,11 +1,12 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { GetAllQuestionsFailure, GetAllQuestionsSuccess } from '../actions/user.actions';
+
+import { GetAllQuestions, GetAllQuestionsFailure, GetAllQuestionsSuccess } from '../actions/all-questions.actions';
 
 export const initialState = {};
 
 const reducer = createReducer(
   initialState,
-  on(GetAllQuestionsSuccess, (state) => {
+  on(GetAllQuestions, (state) => {
     return {
       ...state
     }
@@ -16,14 +17,14 @@ const reducer = createReducer(
       error
     }
   }),
-  on(GetAllQuestionsSuccess, (state, { all_questions }) => {
+  on(GetAllQuestionsSuccess, (state, { questions }) => {
     return {
       ...state,
-      all_questions
+      questions
     }
   })
 )
 
-export function userReducer(state: any | undefined, action: Action) {
+export function allQuestionsReducer(state: any | undefined, action: Action) {
   return reducer(state, action);
 }

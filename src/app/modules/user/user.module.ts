@@ -6,7 +6,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { UserStateModule } from '../../root-store/user/user-state.module';
+// import { UserStateModule } from '../../root-store/user/user-state.module';
 
 
 @NgModule({
@@ -18,7 +18,7 @@ import { UserStateModule } from '../../root-store/user/user-state.module';
     CommonModule,
     UserRoutingModule,
     MatButtonToggleModule,
-    UserStateModule
+    // UserStateModule
   ]
 })
 export class UserModule {

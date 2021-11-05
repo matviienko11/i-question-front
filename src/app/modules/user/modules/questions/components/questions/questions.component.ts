@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
+import { filter, switchMap } from 'rxjs/operators';
 
-import { GetAllQuestions } from '../../../../../../root-store/user/actions/user.actions';
-import { SelectAllQuestions } from '../../../../../../root-store/user/state/user.selectors';
 import { Question } from '../../../../../../shared/interfaces/question.interface';
 import { AnswerModalComponent } from '../answer-modal/answer-modal.component';
-import { filter, tap } from 'rxjs/operators';
+import { QuestionsService } from '../../services/questions.service';
 
 @Component({
   selector: 'app-questions',
@@ -17,14 +15,14 @@ import { filter, tap } from 'rxjs/operators';
 })
 export class QuestionsComponent implements OnInit {
 
-  questions$: Observable<any> = this.store.pipe(SelectAllQuestions)
+  questions$: Observable<any>;
 
-  constructor(private store: Store<any>,
+  constructor(private questionsService: QuestionsService,
               public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(GetAllQuestions())
+    this.questions$ = this.questionsService.getAllQuestions()
   }
 
   openAnswerModal(question: Question) {
@@ -34,8 +32,8 @@ export class QuestionsComponent implements OnInit {
       data: question
     }).afterClosed()
       .pipe(
-        filter(Boolean),
-        tap(data => console.log(data))
+        filter(answer => !!answer),
+        switchMap((answer: string) => this.questionsService.submitAnswer(question.id, answer))
       ).subscribe()
   }
 

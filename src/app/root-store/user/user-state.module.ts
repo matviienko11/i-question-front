@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { userReducer } from './reducers/user.reducers';
-import { UserEffects } from './effects/user.effects';
+import { allQuestionsReducer } from './all-questions/reducers/all-questions.reducers';
+import { AllQuestionsEffects } from './all-questions/effects/all-questions.effects';
 import { QuestionsService } from '../../modules/user/modules/questions/services/questions.service';
 
+const reducers = {
+  all_questions: allQuestionsReducer
+}
 
 @NgModule({
   imports: [
-    StoreModule.forFeature('user', userReducer),
-    EffectsModule.forFeature([UserEffects])
+    StoreModule.forFeature('user', reducers),
+    EffectsModule.forFeature([AllQuestionsEffects])
   ],
   providers: [QuestionsService]
 })

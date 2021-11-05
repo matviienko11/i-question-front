@@ -12,18 +12,23 @@ import { User } from '../../../shared/interfaces/user.interface';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   register(body: User) {
     return this.http.post(environment.BASIC_URL + '/users/register', body)
   }
 
   login(body: User) {
-    return this.http.post<string>(environment.BASIC_URL + '/auth/login',body)
+    return this.http.post<string>(environment.BASIC_URL + '/auth/login', body)
       .pipe(
         pluck('token'),
         tap((token: any) => localStorage.setItem('token', token)),
-        catchError(() => of([]) )
+        catchError(() => of([]))
       )
+  }
+
+  getUserInfo(email: string) {
+    return this.http.post(environment.BASIC_URL + '/auth/user-info', { email })
   }
 }
