@@ -22,7 +22,7 @@ export class QuestionModalComponent implements OnInit {
   }
 
   handleApprove(questionId: string) {
-    this.dialogRef.close(questionId);
+    this.dialogRef.close({ questionId, approvable: this.isApprovable });
   }
 
 }

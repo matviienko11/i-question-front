@@ -28,6 +28,10 @@ export class UsersService {
   }
 
   approveAnswer(userId: string, questionId: string) {
-    return this.http.patch(environment.BASIC_URL + `/user-question/${ userId }/answered/${ questionId }`, { status: 'answered' })
+    return this.http.patch(environment.BASIC_URL + `/user-question/${ userId }/status/${ questionId }`, { status: 'answered' })
+  }
+
+  revokeAnsweredStatus(userId: string, questionId: string) {
+    return this.http.patch(environment.BASIC_URL + `/user-question/${ userId }/status/${ questionId }`, { status: 'pending' })
   }
 }
