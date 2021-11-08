@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { filter, switchMap } from 'rxjs/operators';
 
-import { Question } from '../../../../../../shared/interfaces/question.interface';
-import { AnswerModalComponent } from '../answer-modal/answer-modal.component';
 import { QuestionsService } from '../../services/questions.service';
 
 @Component({
@@ -15,26 +12,24 @@ import { QuestionsService } from '../../services/questions.service';
 })
 export class QuestionsComponent implements OnInit {
 
-  questions$: Observable<any>;
+  question$: Observable<any>;
+  answer: string = '';
 
   constructor(private questionsService: QuestionsService,
               public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    this.questions$ = this.questionsService.getAllQuestions()
   }
 
-  openAnswerModal(question: Question) {
-    const dialogRef = this.dialog.open(AnswerModalComponent, {
-      width: '60%',
-      height: '60%',
-      data: question
-    }).afterClosed()
-      .pipe(
-        filter(answer => !!answer),
-        switchMap((answer: string) => this.questionsService.submitAnswer(question.id, answer))
-      ).subscribe()
+  startGame() {
+    this.question$ = this.questionsService.getQuestion()
+  }
+
+  submitAnswer(questionId: string) {
+    this.questionsService.submitAnswer(questionId, this.answer).subscribe()
+    this.answer = '';
+    this.question$ = this.questionsService.getQuestion()
   }
 
 }

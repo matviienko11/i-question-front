@@ -12,13 +12,11 @@ import { MatInputModule } from '@angular/material/input';
 import { QuestionsComponent } from './components/questions/questions.component';
 import { QuestionsRoutingModule } from './questions-routing.module';
 import { QuestionsService } from './services/questions.service';
-import { AnswerModalComponent } from './components/answer-modal/answer-modal.component';
 
 
 @NgModule({
   declarations: [
     QuestionsComponent,
-    AnswerModalComponent
   ],
   imports: [
     CommonModule,
