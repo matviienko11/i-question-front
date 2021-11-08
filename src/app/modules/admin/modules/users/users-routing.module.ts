@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: ':id',
     component: UserPageComponent,
-    resolve: { user: UserPageResolver }
+    resolve: { userData: UserPageResolver }
   }
 ]
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 
 import { UsersService } from '../services/users.service';
 
@@ -12,6 +12,10 @@ export class UserPageResolver implements Resolve<any> {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    return this.usersService.getOneUser(route.params.id);
+    return forkJoin({
+      user: this.usersService.getOneUser(route.params.id),
+      pending: this.usersService.getAllPendingQuestions(route.params.id),
+      answered: this.usersService.getAllAnsweredQuestions(route.params.id)
+    })
   }
 }

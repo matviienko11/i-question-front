@@ -1,0 +1,5 @@
+<div>
+  <h3>{{question.question.question}}</h3>
+  <p>{{question.answer}}</p>
+  <button mat-raised-button color="primary" *ngIf="isApprovable" (click)="handleApprove(question.questionId)">Approve</button>
+</div>

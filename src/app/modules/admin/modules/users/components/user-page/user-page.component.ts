@@ -13,6 +13,8 @@ import { User } from '../../../../../../shared/interfaces/user.interface';
 export class UserPageComponent implements OnInit {
 
   user: User;
+  pending: Array<any>;
+  answered: Array<any>;
   form: FormGroup;
 
   constructor(private route: ActivatedRoute,
@@ -20,7 +22,9 @@ export class UserPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = this.route.snapshot.data.user;
+    this.user = this.route.snapshot.data.userData.user;
+    this.pending = this.route.snapshot.data.userData.pending;
+    this.answered = this.route.snapshot.data.userData.answered;
     this.form = this.fb.group({
       first_name: [this.user.first_name],
       last_name: [this.user.last_name],

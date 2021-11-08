@@ -24,7 +24,13 @@
         <input matInput formControlName="email">
       </mat-form-field>
     </div>
-
-
   </form>
+
+  Pending:
+  <br>
+  <app-question-table class="user_page__table" [questions]="pending" [approvable]="true" [userId]="user.id"></app-question-table>
+  <br>
+  Answered:
+  <br>
+  <app-question-table class="user_page__table" [questions]="answered"></app-question-table>
 </div>
