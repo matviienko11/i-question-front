@@ -1,1 +1,9 @@
-<p>dashboard works!</p>
+<div class="dashboard_wrapper">
+  <div *ngIf="allQuestions$ | async as questions">
+    <p>Total number of questions: {{questions.length}}</p>
+  </div>
+
+  <div *ngIf="allUsers$ | async as users">
+    <p>Total number of users: {{users.length}}</p>
+  </div>
+</div>

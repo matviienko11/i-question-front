@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from '../../services/dashboard.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  allQuestions$: Observable<any>;
+  allUsers$: Observable<any>;
+
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
+    this.allQuestions$ = this.dashboardService.getAllQuestions();
+    this.allUsers$ = this.dashboardService.getAllUsers()
   }
 
 }
