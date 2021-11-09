@@ -8,6 +8,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AdminComponent } from './admin.component';
 import { AdminStateModule } from '../../root-store/admin/admin-state.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AdminStateModule } from '../../root-store/admin/admin-state.module';
     AdminRoutingModule,
     MatButtonToggleModule,
     MatTabsModule,
-    AdminStateModule
+    AdminStateModule,
+    MatIconModule
   ]
 })
 export class AdminModule {
