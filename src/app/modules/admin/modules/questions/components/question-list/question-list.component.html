@@ -1,5 +1,5 @@
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="questions">
+<div class="question_list__wrapper">
+  <table class="table" mat-table [dataSource]="questions">
     <ng-container matColumnDef="question">
       <th mat-header-cell *matHeaderCellDef> Question</th>
       <td mat-cell *matCellDef="let element"> {{ element.question }} </td>
