@@ -1,4 +1,28 @@
 .navbar {
-  background-color: aquamarine;
+  background-color: #797979;
   width: 100vw;
+
+  &__item {
+    margin-left: 15px;
+  }
+
+  .mat-button-toggle-group {
+    margin-left: 30px;
+  }
+
+  .mat-button-toggle-checked, .mat-button-toggle, .mat-button-toggle-group {
+    border: none;
+    background-color: inherit;
+  }
+
+  .mat-button-toggle-checked {
+    background: inherit;
+    color: white;
+    border-bottom: solid 2px white;
+  }
+
+  ::ng-deep .mat-button-toggle-focus-overlay {
+    position: unset;
+  }
+
 }
