@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,10 +10,14 @@ export class NavbarComponent implements OnInit {
 
   @Output() navigation: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
+  }
+
+  redirectToDashboard() {
+    this.router.navigate(['user/dashboard'])
   }
 
   handle({ value }: any) {

@@ -1,28 +1,55 @@
-.navbar {
+.navbar_wrapper {
   background-color: #797979;
-  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  height: 55px;
 
-  &__item {
-    margin-left: 15px;
+  .logo {
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__image {
+      width: 40px;
+      height: 30px;
+      background-color: inherit;
+    }
+    &__image:hover {
+      cursor: pointer;
+    }
   }
 
-  .mat-button-toggle-group {
-    margin-left: 30px;
-  }
-
-  .mat-button-toggle-checked, .mat-button-toggle, .mat-button-toggle-group {
-    border: none;
+  .navbar {
     background-color: inherit;
-  }
+    border: none;
 
-  .mat-button-toggle-checked {
-    background: inherit;
-    color: white;
-    border-bottom: solid 2px white;
-  }
+    &__item {
+      margin-left: 15px;
+    }
 
-  ::ng-deep .mat-button-toggle-focus-overlay {
-    position: unset;
-  }
+    .mat-button-toggle-group {
+      margin-left: 30px;
+    }
 
+    .mat-button-toggle {
+      margin-top: 2px;
+    }
+
+    .mat-button-toggle-checked, .mat-button-toggle, .mat-button-toggle-group {
+      border: none;
+      background-color: inherit;
+    }
+
+    .mat-button-toggle-checked {
+      background: inherit;
+      color: white;
+      border-bottom: solid 2px white;
+    }
+
+    ::ng-deep .mat-button-toggle-focus-overlay {
+      position: unset;
+    }
+
+  }
 }

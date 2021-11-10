@@ -1,13 +1,16 @@
-<mat-button-toggle-group class="navbar" value="dashboard" aria-label="Navigation" (change)="handle($event)">
-  <mat-button-toggle class="navbar__item" value="dashboard">
-    <img src="./assets/images/logo.png" style="width: 35px; height: 30px; background-color: inherit;" alt="logo">
-  </mat-button-toggle>
-  <mat-button-toggle class="navbar__item" value="questions">
-    <mat-icon>outlined_flag</mat-icon>
-    <span>Start</span>
-  </mat-button-toggle>
-  <mat-button-toggle class="navbar__item" value="questions">Answered</mat-button-toggle>
-  <mat-button-toggle class="navbar__item" value="questions">
-    <mat-icon>account_circle</mat-icon>
-  </mat-button-toggle>
-</mat-button-toggle-group>
+<div class="navbar_wrapper">
+  <div class="logo">
+    <img src="./assets/images/logo.png" class="logo__image" alt="logo" (click)="redirectToDashboard()">
+  </div>
+  <mat-button-toggle-group class="navbar" value="dashboard" aria-label="Navigation" (change)="handle($event)">
+    <mat-button-toggle class="navbar__item" value="questions">
+      <mat-icon>flag</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle class="navbar__item" value="questions">
+      <mat-icon>announcement</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle class="navbar__item" value="questions">
+      <mat-icon>account_circle</mat-icon>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
