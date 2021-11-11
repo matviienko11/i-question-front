@@ -11,6 +11,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-  ]
+  ],
+  providers: [AuthService]
 })
 export class AuthModule { }
