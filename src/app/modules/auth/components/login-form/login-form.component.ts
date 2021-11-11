@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { map, tap } from 'rxjs/operators';
+
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -27,8 +29,9 @@ export class LoginFormComponent implements OnInit {
 
   handleLogin() {
     // this.store.dispatch(GetUserInfo(this.form.value))
-    this.authService.login(this.form.value).subscribe();
-    this.form.reset();
-    this.router.navigate(['/user'])
+    this.authService.login(this.form.value).pipe(
+      tap(() => this.form.reset()),
+      map(() => this.router.navigate(['/user'])),
+    ).subscribe()
   }
 }

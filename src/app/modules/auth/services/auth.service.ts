@@ -28,6 +28,14 @@ export class AuthService {
       )
   }
 
+  logout() {
+    localStorage.removeItem('token');
+  }
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
   getUserInfo(email: string) {
     return this.http.post(environment.BASIC_URL + '/auth/user-info', { email })
   }

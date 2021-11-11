@@ -15,6 +15,7 @@
       height: 30px;
       background-color: inherit;
     }
+
     &__image:hover {
       cursor: pointer;
     }
@@ -50,6 +51,17 @@
     ::ng-deep .mat-button-toggle-focus-overlay {
       position: unset;
     }
+  }
 
+  .logout {
+    height: 55px;
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    padding-top: 15px
+  }
+
+  .logout:hover {
+    cursor: pointer;
   }
 }

@@ -7,6 +7,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 // import { UserStateModule } from '../../root-store/user/user-state.module';
 
 
@@ -20,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
     UserRoutingModule,
     MatButtonToggleModule,
     MatIconModule,
+    MatDialogModule
     // UserStateModule
   ]
 })

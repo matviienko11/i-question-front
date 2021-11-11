@@ -9,11 +9,17 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { MatButtonModule } from '@angular/material/button';
+
+import { AuthGuardService } from './modules/auth/services/auth-guard.service';
+import { ConfirmModalComponent } from './shared/components/confirm-modal/confirm-modal.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ConfirmModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,9 +28,10 @@ import { EffectsModule } from '@ngrx/effects';
     HttpClientModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production})
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    MatButtonModule
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
