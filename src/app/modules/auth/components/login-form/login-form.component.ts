@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { map, tap } from 'rxjs/operators';
+import { map, pluck, tap } from 'rxjs/operators';
 
 import { AuthService } from '../../services/auth.service';
+import { ROLES } from '../../../../shared/interfaces/roles.enum';
 
 @Component({
   selector: 'app-login-form',
@@ -31,7 +32,11 @@ export class LoginFormComponent implements OnInit {
     // this.store.dispatch(GetUserInfo(this.form.value))
     this.authService.login(this.form.value).pipe(
       tap(() => this.form.reset()),
-      map(() => this.router.navigate(['/user'])),
+      pluck('userInfo'),
+      map((user) => {
+        if(user.role === ROLES.USER) return this.router.navigate(['/user'])
+        if(user.role === ROLES.ADMIN) return this.router.navigate(['/admin'])
+      }),
     ).subscribe()
   }
 }
