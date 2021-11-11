@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 import { MatTableModule } from '@angular/material/table';
@@ -26,7 +25,6 @@ import { QuestionPageComponent } from './containers/question-page/question-page.
   imports: [
     CommonModule,
     QuestionsRoutingModule,
-    HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { MatCardModule } from '@angular/material/card';
@@ -21,7 +20,6 @@ import { QuestionsService } from './services/questions.service';
   imports: [
     CommonModule,
     QuestionsRoutingModule,
-    HttpClientModule,
     MatCardModule,
     MatButtonModule,
     MatDialogModule,
