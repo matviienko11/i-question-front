@@ -23,13 +23,12 @@ export class AuthService {
     return this.http.post<string>(environment.BASIC_URL + '/auth/login', body)
       .pipe(
         tap(({ token }: any) => localStorage.setItem('token', token)),
-        catchError(() => of([]))
+        catchError((err) => of(err))
       )
   }
 
   logout() {
     localStorage.removeItem('token');
-    localStorage.removeItem('user_role')
   }
 
   isAuthenticated(): boolean {
