@@ -20,7 +20,7 @@ export class QuestionsComponent implements OnInit {
 
   constructor(private questionsService: QuestionsService,
               private route: ActivatedRoute) {
-    this.userId = this.route.snapshot.data.userId;
+    this.userId = this.route.snapshot.data.user.id;
   }
 
   ngOnInit(): void {

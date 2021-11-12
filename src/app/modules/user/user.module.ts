@@ -9,12 +9,14 @@ import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserStateModule } from '../../root-store/user/user-state.module';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
 
 
 @NgModule({
   declarations: [
     UserComponent,
-    NavbarComponent
+    NavbarComponent,
+    MyProfileComponent
   ],
   imports: [
     CommonModule,

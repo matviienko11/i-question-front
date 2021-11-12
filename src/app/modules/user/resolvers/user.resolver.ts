@@ -17,7 +17,7 @@ export class UserResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
     return this.store.pipe(
       SelectUserInfo,
-      map(({ id }) => id),
+      map((user) => user),
       take(1)
     )
   }
