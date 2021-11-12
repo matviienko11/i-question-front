@@ -1,37 +1,47 @@
-.sidenav {
-  height: 100vh;
-  width: 70px;
+.sidenav_wrapper {
   background-color: #3838fc;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 0 10px;
 
-  &__item {
-    margin-top: 30px;
+  .sidenav {
     background-color: inherit;
-
-  }
-
-  .mat-button-toggle-group {
-    margin-left: 30px;
-  }
-
-  .mat-button-toggle-checked, .mat-button-toggle, .mat-button-toggle-group {
     border: none;
-    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+
+    .mat-button-toggle {
+      margin-top: 20px;
+    }
+
+    .mat-button-toggle-checked, .mat-button-toggle, .mat-button-toggle-group {
+      border: none;
+      background-color: inherit;
+    }
+
+    .mat-button-toggle-checked {
+      background: inherit;
+      color: white;
+      border-bottom: solid 2px white;
+    }
+
+    ::ng-deep .mat-button-toggle-focus-overlay {
+      position: unset;
+    }
   }
 
-  .mat-button-toggle-checked {
-    background: inherit;
-    border-bottom: solid 2px white;
+  .logout {
+    height: 55px;
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    padding-top: 15px
   }
 
-  ::ng-deep .mat-button-toggle-focus-overlay {
-    position: unset;
-  }
-
-  &__item:hover {
+  .logout:hover {
     cursor: pointer;
   }
 }
-

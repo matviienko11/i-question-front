@@ -1,11 +1,16 @@
-<mat-button-toggle-group class="sidenav" value="dashboard" aria-label="Navigation" (change)="handle($event)">
-  <mat-button-toggle class="sidenav__item" value="dashboard">
-    <mat-icon>dashboard</mat-icon>
-  </mat-button-toggle>
-  <mat-button-toggle class="sidenav__item" value="users">
-    <mat-icon>account_circle</mat-icon>
-  </mat-button-toggle>
-  <mat-button-toggle class="sidenav__item" value="questions">
-    <mat-icon>question_answer</mat-icon>
-  </mat-button-toggle>
-</mat-button-toggle-group>
+<div class="sidenav_wrapper">
+  <mat-button-toggle-group class="sidenav" value="dashboard" aria-label="Navigation" (change)="handleRedirect($event)">
+    <mat-button-toggle value="dashboard">
+      <mat-icon>dashboard</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle value="questions">
+      <mat-icon>announcement</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle value="users">
+      <mat-icon>account_circle</mat-icon>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+  <div class="logout">
+    <mat-icon (click)="handleLogout()">exit_to_app</mat-icon>
+  </div>
+</div>

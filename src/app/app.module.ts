@@ -15,7 +15,6 @@ import { AuthGuardService } from './modules/auth/services/auth-guard.service';
 import { ConfirmModalComponent } from './shared/components/confirm-modal/confirm-modal.component';
 import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
 import { environment } from '../environments/environment';
-import { SnackbarComponent } from './shared/components/snackbar/snackbar.component';
 import { SnackbarService } from './shared/services/snackbar.service';
 
 
@@ -23,7 +22,6 @@ import { SnackbarService } from './shared/services/snackbar.service';
   declarations: [
     AppComponent,
     ConfirmModalComponent,
-    SnackbarComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,9 +2,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { filter, map, tap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
 
 import { AuthService } from '../../../auth/services/auth.service';
-import { MatDialog } from '@angular/material/dialog';
 import { ConfirmModalComponent } from '../../../../shared/components/confirm-modal/confirm-modal.component';
 
 @Component({
@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['user/dashboard']);
   }
 
-  handle({ value }: any) {
+  handleRedirect({ value }: any) {
     this.navigation.emit(value);
   }
 

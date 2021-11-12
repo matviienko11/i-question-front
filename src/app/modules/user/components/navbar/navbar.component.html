@@ -2,7 +2,7 @@
   <div class="logo">
     <img src="./assets/images/logo.png" class="logo__image" alt="logo" (click)="redirectToDashboard()">
   </div>
-  <mat-button-toggle-group class="navbar" value="dashboard" aria-label="Navigation" (change)="handle($event)">
+  <mat-button-toggle-group class="navbar" value="dashboard" aria-label="Navigation" (change)="handleRedirect($event)">
     <mat-button-toggle class="navbar__item" value="questions">
       <mat-icon>flag</mat-icon>
     </mat-button-toggle>
@@ -12,7 +12,7 @@
     <mat-button-toggle class="navbar__item" value="questions">
       <mat-icon>account_circle</mat-icon>
     </mat-button-toggle>
-    <div class="logout" style="height: 55px; width: 55px; display: flex; justify-content: center; padding-top: 15px">
+    <div class="logout">
       <mat-icon (click)="handleLogout()">exit_to_app</mat-icon>
     </div>
   </mat-button-toggle-group>

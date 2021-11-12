@@ -3,13 +3,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    width: 90vw;
+    height: 90vh;
   }
 
   &__table {
-    width: 60%;
-    height: 40%;
+    width: 80%;
   }
 
   &__user_row:hover {
