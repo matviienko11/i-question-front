@@ -6,6 +6,8 @@ import { map, pluck, tap } from 'rxjs/operators';
 
 import { AuthService } from '../../services/auth.service';
 import { ROLES } from '../../../../shared/interfaces/roles.enum';
+import { GetUserInfo } from '../../../../root-store/auth/actions/auth.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-login-form',
@@ -18,7 +20,8 @@ export class LoginFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private store: Store<any>) {
   }
 
   ngOnInit(): void {
@@ -29,14 +32,6 @@ export class LoginFormComponent implements OnInit {
   }
 
   handleLogin() {
-    // this.store.dispatch(GetUserInfo(this.form.value))
-    this.authService.login(this.form.value).pipe(
-      tap(() => this.form.reset()),
-      pluck('userInfo'),
-      map((user) => {
-        if(user.role === ROLES.USER) return this.router.navigate(['/user'])
-        if(user.role === ROLES.ADMIN) return this.router.navigate(['/admin'])
-      }),
-    ).subscribe()
+    this.store.dispatch(GetUserInfo({ payload: this.form.value }))
   }
 }

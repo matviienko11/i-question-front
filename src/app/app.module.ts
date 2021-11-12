@@ -16,6 +16,9 @@ import { ConfirmModalComponent } from './shared/components/confirm-modal/confirm
 import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
 import { environment } from '../environments/environment';
 import { SnackbarService } from './shared/services/snackbar.service';
+import { userInfoReducer } from './root-store/auth/reducers/auth.reducers';
+import { AuthEffects } from './root-store/auth/effects/auth.effects';
+
 
 
 @NgModule({
@@ -28,11 +31,13 @@ import { SnackbarService } from './shared/services/snackbar.service';
     AppRoutingModule,
     NoopAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot({ user_info: userInfoReducer }),
+    EffectsModule.forRoot([
+      AuthEffects
+    ]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   providers: [
     AuthGuardService,

@@ -1,14 +1,14 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
 import { GetUserInfo, GetUserInfoFailure, GetUserInfoSuccess } from '../actions/auth.actions';
+import { User } from '../../../shared/interfaces/user.interface';
 
-export const initialState = {};
-
+const initialState: User = JSON.parse(localStorage.getItem('user_info') || '{}');
 const reducer = createReducer(
   initialState,
   on(GetUserInfo, (state) => {
     return {
-      ...state
+      ...state,
     }
   }),
   on(GetUserInfoFailure, (state, { error }) => {
@@ -17,14 +17,15 @@ const reducer = createReducer(
       error
     }
   }),
-  on(GetUserInfoSuccess, (state, { user }) => {
+  on(GetUserInfoSuccess, (state, { userInfo }) => {
+    localStorage.setItem('user_info', JSON.stringify(userInfo))
     return {
       ...state,
-      user
+      ...userInfo
     }
   })
 )
 
-export function userInfoReducer(state: any | undefined, action: Action) {
+export function userInfoReducer(state: any, action: Action) {
   return reducer(state, action);
 }

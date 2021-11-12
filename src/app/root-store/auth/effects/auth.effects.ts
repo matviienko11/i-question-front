@@ -16,9 +16,9 @@ export class AuthEffects {
   getUserInfo$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(GetUserInfo),
-      switchMap(({ email }) => this.authService.getUserInfo(email)
+      switchMap(({ payload }) => this.authService.login({ payload })
         .pipe(
-          map((user) => GetUserInfoSuccess({ user })),
+          map(({ userInfo }) => GetUserInfoSuccess({ userInfo })),
           catchError(error => of(GetUserInfoFailure({ error })))
         ))
     )
