@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
+import { map } from 'rxjs/operators';
 
 import { QuestionsService } from '../../services/questions.service';
 
@@ -14,22 +15,40 @@ export class QuestionsComponent implements OnInit {
 
   question$: Observable<any>;
   answer: string = '';
+  userId: string;
+  error: string
 
   constructor(private questionsService: QuestionsService,
-              public dialog: MatDialog) {
+              private route: ActivatedRoute) {
+    this.userId = this.route.snapshot.data.userId;
   }
 
   ngOnInit(): void {
   }
 
   startGame() {
-    this.question$ = this.questionsService.getQuestion()
+    this.Question$;
   }
 
   submitAnswer(questionId: string) {
-    this.questionsService.submitAnswer(questionId, this.answer).subscribe()
+    this.questionsService.submitAnswer(this.userId, questionId, this.answer).subscribe()
     this.answer = '';
-    this.question$ = this.questionsService.getQuestion()
+    this.Question$;
+  }
+
+  skipQuestion() {
+    this.answer = '';
+    this.Question$;
+  }
+
+  private get Question$() {
+    return this.question$ = this.questionsService.getQuestion(this.userId)
+      .pipe(
+      map((data) => {
+          if (data.error) this.error = data.error.message
+          return data.question
+        }
+      ));
   }
 
 }

@@ -1,8 +1,11 @@
 <div class="navbar_wrapper">
-  <div class="logo">
-    <img src="./assets/images/logo.png" class="logo__image" alt="logo" (click)="redirectToDashboard()">
-  </div>
+<!--  <div class="logo">-->
+<!--    <img src="./assets/images/logo.png" class="logo__image" alt="logo" (click)="redirectToDashboard()">-->
+<!--  </div>-->
   <mat-button-toggle-group class="navbar" value="dashboard" aria-label="Navigation" (change)="handleRedirect($event)">
+    <mat-button-toggle class="navbar__item" value="dashboard">
+      <mat-icon>dashboard</mat-icon>
+    </mat-button-toggle>
     <mat-button-toggle class="navbar__item" value="questions">
       <mat-icon>flag</mat-icon>
     </mat-button-toggle>

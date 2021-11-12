@@ -1,11 +1,20 @@
 <div class="questions_wrapper">
   <button *ngIf="!question$" mat-raised-button color="primary" (click)="startGame()">Click to get the question</button>
-  <div *ngIf="question$ | async as question">
-    <h3>{{question.question}}</h3>
-    <mat-form-field appearance="outline">
-      <mat-label>Answer</mat-label>
-      <textarea matInput [(ngModel)]="answer"></textarea>
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="submitAnswer(question.id)">Submit</button>
+  <div *ngIf="question$ && !error" class="question_card">
+    <div *ngIf="question$ | async as question">
+      <h3>{{question.question}}</h3>
+      <mat-form-field appearance="outline">
+        <mat-label>Answer</mat-label>
+        <textarea matInput [(ngModel)]="answer"></textarea>
+      </mat-form-field>
+      <div class="buttons">
+        <button mat-raised-button color="primary" (click)="submitAnswer(question.id)">Submit</button>
+        <button mat-raised-button (click)="skipQuestion()">Skip question</button>
+      </div>
+    </div>
+    </div>
+
+  <div *ngIf="error">
+    <p>{{error}}</p>
   </div>
 </div>

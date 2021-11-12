@@ -1,19 +1,25 @@
 .questions_wrapper {
   padding:  40px;
-  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  &__question_card {
+  .question_card {
     width: 70%;
-    height: 70%;
     margin: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 4px 4px 8px 10px rgba(34, 60, 80, 0.2);
+    padding: 20px;
   }
+
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-self: center;
+    justify-content: space-around;
+    width: 40%;
+  }
+
   ::ng-deep .mat-form-field {
     width: 100%;
   }
