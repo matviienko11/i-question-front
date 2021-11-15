@@ -28,6 +28,7 @@ import { QuestionModalComponent } from './components/users/question-modal/questi
 import { UsersService } from './services/users.service';
 import { DashboardService } from './services/dashboard.service';
 import { QuestionsService } from './services/questions.service';
+import { EditModalComponent } from './components/questions/edit-modal/edit-modal.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { QuestionsService } from './services/questions.service';
     UserPageComponent,
     UserListComponent,
     QuestionTableComponent,
-    QuestionModalComponent
+    QuestionModalComponent,
+    EditModalComponent
   ],
   imports: [
     CommonModule,

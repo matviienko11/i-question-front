@@ -1,0 +1,17 @@
+<div class="edit_modal_wrapper">
+  <form [formGroup]="form" (ngSubmit)="updateQuestion()" class="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Select Category</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let item of category" [value]="item.value">{{item.text}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form__textarea" appearance="outline">
+      <mat-label>Question</mat-label>
+      <textarea matInput formControlName="question"></textarea>
+    </mat-form-field>
+    <div class="form__button">
+      <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Update</button>
+    </div>
+  </form>
+</div>

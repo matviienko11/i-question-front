@@ -1,16 +1,21 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { filter, map, switchMap, tap } from 'rxjs/operators';
+import { filter, map, switchMap } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
+import { MatDialog } from '@angular/material/dialog';
 
 import { QuestionsService } from '../../../services/questions.service';
 import { Question } from '../../../../../shared/interfaces/question.interface';
-import { DeleteQuestion, GetAllQuestions } from '../../../../../root-store/admin/questions/actions/questions.actions';
+import {
+  DeleteQuestion,
+  EditQuestion,
+  GetAllQuestions
+} from '../../../../../root-store/admin/questions/actions/questions.actions';
 import { SelectAllQuestions, SelectCount } from '../../../../../root-store/admin/questions/state/questions.selectors';
-import { MatDialog } from '@angular/material/dialog';
 import { ConfirmModalComponent } from '../../../../../shared/components/confirm-modal/confirm-modal.component';
+import { EditModalComponent } from '../edit-modal/edit-modal.component';
 
 @Component({
   selector: 'app-question-list',
@@ -43,8 +48,16 @@ export class QuestionListComponent implements OnInit {
     this.Questions$;
   }
 
-  handleEdit() {
-
+  handleEdit(question: Question) {
+    const dialogRef = this.dialog.open(EditModalComponent, {
+      data: { question },
+      width: '60%',
+      height: '40%'
+    }).afterClosed()
+      .pipe(
+        filter(event => !!event),
+        map(question => this.store.dispatch(EditQuestion({ question })))
+      ).subscribe()
   }
 
   handleDelete(id: string) {

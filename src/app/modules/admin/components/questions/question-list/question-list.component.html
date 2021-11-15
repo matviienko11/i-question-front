@@ -15,7 +15,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element" class="actions">
-        <mat-icon (click)="handleEdit()">edit</mat-icon>
+        <mat-icon (click)="handleEdit(element)">edit</mat-icon>
         <mat-icon (click)="handleDelete(element.id)">delete_outline</mat-icon>
       </td>
     </ng-container>

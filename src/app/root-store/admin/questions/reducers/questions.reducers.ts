@@ -2,7 +2,13 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
 
 import {
-  AddQuestion, AddQuestionFailure, AddQuestionSuccess, DeleteQuestion, DeleteQuestionFailure, DeleteQuestionSuccess,
+  AddQuestion,
+  AddQuestionFailure,
+  AddQuestionSuccess,
+  DeleteQuestion,
+  DeleteQuestionFailure,
+  DeleteQuestionSuccess,
+  EditQuestion, EditQuestionFailure, EditQuestionSuccess,
   GetAllQuestions,
   GetAllQuestionsFailure,
   GetAllQuestionsSuccess
@@ -25,22 +31,24 @@ const reducer = createReducer(
   on(
     GetAllQuestions,
     AddQuestion,
+    EditQuestion,
     DeleteQuestion,
     (state) => {
-    return {
-      ...state
-    }
-  }),
+      return {
+        ...state
+      }
+    }),
   on(
     GetAllQuestionsFailure,
     AddQuestionFailure,
+    EditQuestionFailure,
     DeleteQuestionFailure,
     (state, { error }) => {
-    return {
-      ...state,
-      error
-    }
-  }),
+      return {
+        ...state,
+        error
+      }
+    }),
   on(GetAllQuestionsSuccess, (state, { questions }) => {
     return adapter.setAll(questions.data, {
       ...state,
@@ -54,6 +62,9 @@ const reducer = createReducer(
   }),
   on(DeleteQuestionSuccess, (state, { id }) => {
     return adapter.removeOne(id, state)
+  }),
+  on(EditQuestionSuccess, (state, { question }) => {
+    return adapter.upsertOne(question, state)
   })
 )
 

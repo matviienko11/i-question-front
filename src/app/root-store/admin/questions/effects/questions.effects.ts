@@ -6,7 +6,13 @@ import { of } from 'rxjs';
 
 import { QuestionsService } from '../../../../modules/admin/services/questions.service';
 import {
-  AddQuestion, AddQuestionFailure, AddQuestionSuccess, DeleteQuestion, DeleteQuestionFailure, DeleteQuestionSuccess,
+  AddQuestion,
+  AddQuestionFailure,
+  AddQuestionSuccess,
+  DeleteQuestion,
+  DeleteQuestionFailure,
+  DeleteQuestionSuccess,
+  EditQuestion, EditQuestionFailure, EditQuestionSuccess,
   GetAllQuestions,
   GetAllQuestionsFailure,
   GetAllQuestionsSuccess
@@ -35,6 +41,17 @@ export class QuestionsEffects {
         .pipe(
           map(question => AddQuestionSuccess({ question })),
           catchError(error => of(AddQuestionFailure({ error })))
+        ))
+    )
+  })
+
+  editQuestion$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(EditQuestion),
+      switchMap(({ question }) => this.questionsService.updateQuestion(question)
+        .pipe(
+          map(() => EditQuestionSuccess({ question })),
+          catchError(error => of(EditQuestionFailure({ error })))
         ))
     )
   })
