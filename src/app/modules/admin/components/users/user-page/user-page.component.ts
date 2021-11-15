@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { User } from '../../../../../../shared/interfaces/user.interface';
+import { User } from '../../../../../shared/interfaces/user.interface';
 
 
 @Component({

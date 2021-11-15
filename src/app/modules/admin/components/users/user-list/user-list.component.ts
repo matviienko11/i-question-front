@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { GetAllUsers } from '../../../../../../root-store/admin/users/actions/users.actions';
-import { SelectAllUsers } from '../../../../../../root-store/admin/users/state/users.selectors';
+import { GetAllUsers } from '../../../../../root-store/admin/users/actions/users.actions';
+import { SelectAllUsers } from '../../../../../root-store/admin/users/state/users.selectors';
 
 
 @Component({

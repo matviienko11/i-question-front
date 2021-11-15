@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { MatDialog } from '@angular/material/dialog';
-import { mergeMap, tap } from 'rxjs/operators';
+import { filter, mergeMap } from 'rxjs/operators';
 
 import { QuestionModalComponent } from '../question-modal/question-modal.component';
-import { UsersService } from '../../services/users.service';
+import { UsersService } from '../../../services/users.service';
 
 @Component({
   selector: 'app-question-table',
@@ -31,6 +31,7 @@ export class QuestionTableComponent implements OnInit {
       data: { questionData, isApprovable: this.approvable }
     }).afterClosed()
       .pipe(
+        filter(event => !!event),
         mergeMap(({ questionId, approvable }) => {
           if(approvable) {
             return this.usersService.approveAnswer(this.userId, questionId)

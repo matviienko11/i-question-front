@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from './user.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { UserResolver } from './resolvers/user.resolver';
+import { QuestionsComponent } from './components/questions/questions.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -17,11 +19,11 @@ const routes: Routes = [
       },
       {
         path: 'dashboard',
-        loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
+        component: DashboardComponent,
       },
       {
         path: 'questions',
-        loadChildren: () => import('./modules/questions/questions.module').then(m => m.QuestionsModule)
+        component: QuestionsComponent,
       },
       { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },
     ]

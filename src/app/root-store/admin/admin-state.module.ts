@@ -3,7 +3,7 @@ import { StoreModule } from '@ngrx/store';
 import { usersReducer } from './users/reducers/users.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { UsersEffects } from './users/effects/users.effects';
-import { UsersService } from '../../modules/admin/modules/users/services/users.service';
+import { UsersService } from '../../modules/admin/services/users.service';
 
 const reducers = {
   users: usersReducer,

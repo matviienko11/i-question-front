@@ -3,7 +3,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { allQuestionsReducer } from './all-questions/reducers/all-questions.reducers';
 import { AllQuestionsEffects } from './all-questions/effects/all-questions.effects';
-import { QuestionsService } from '../../modules/user/modules/questions/services/questions.service';
+import { QuestionsService } from '../../modules/user/services/questions.service';
 
 const reducers = {
   all_questions: allQuestionsReducer

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { environment } from '../../../../../../environments/environment';
-import { Question } from '../../../../../shared/interfaces/question.interface';
+import { environment } from '../../../../environments/environment';
+import { Question } from '../../../shared/interfaces/question.interface';
 
 @Injectable()
 export class QuestionsService {

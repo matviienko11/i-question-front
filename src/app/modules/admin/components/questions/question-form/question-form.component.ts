@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { QUESTION_CATEGORY } from '../../../../../../shared/interfaces/question-category.interface';
-import { QuestionsService } from '../../services/questions.service';
+import { QUESTION_CATEGORY } from '../../../../../shared/interfaces/question-category.interface';
+import { QuestionsService } from '../../../services/questions.service';
 
 @Component({
   selector: 'app-question-form',

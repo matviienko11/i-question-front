@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AdminComponent } from './admin.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { QuestionPageComponent } from './components/questions/question-page/question-page.component';
+import { UserPageResolver } from './resolvers/user-page.resolver';
+import { UserListComponent } from './components/users/user-list/user-list.component';
+import { UserPageComponent } from './components/users/user-page/user-page.component';
 
 const routes: Routes = [
   {
@@ -9,24 +15,30 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
-      },
-      {
-        path: 'users',
-        loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule)
+        component: DashboardComponent
       },
       {
         path: 'questions',
-        loadChildren: () => import('./modules/questions/questions.module').then(m => m.QuestionsModule)
+        component: QuestionPageComponent
+      },
+      {
+        path: 'users',
+        component: UserListComponent,
+      },
+      {
+        path: 'users/:id',
+        component: UserPageComponent,
+        resolve: { userData: UserPageResolver },
       },
       { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },
-
     ]
   }
 ]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [UserPageResolver]
 })
-export class AdminRoutingModule {}
+export class AdminRoutingModule {
+}

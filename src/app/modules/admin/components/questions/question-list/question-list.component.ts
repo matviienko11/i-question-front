@@ -4,8 +4,8 @@ import { map } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { QuestionsService } from '../../services/questions.service';
-import { Question } from '../../../../../../shared/interfaces/question.interface';
+import { QuestionsService } from '../../../services/questions.service';
+import { Question } from '../../../../../shared/interfaces/question.interface';
 
 @Component({
   selector: 'app-question-list',

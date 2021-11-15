@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { UsersService } from '../../../../modules/admin/modules/users/services/users.service';
+import { UsersService } from '../../../../modules/admin/services/users.service';
 import { GetAllUsers, GetAllUsersFailure, GetAllUsersSuccess } from '../actions/users.actions';
 
 

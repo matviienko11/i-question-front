@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { QuestionsService } from '../../../../modules/user/modules/questions/services/questions.service';
+import { QuestionsService } from '../../../../modules/user/services/questions.service';
 import { GetAllQuestions, GetAllQuestionsFailure, GetAllQuestionsSuccess } from '../actions/all-questions.actions';
 
 @Injectable()

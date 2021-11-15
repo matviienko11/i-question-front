@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { QuestionsService } from '../../services/questions.service';
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.scss']
 })
-export class QuestionsComponent implements OnInit {
+export class QuestionsComponent {
 
   question$: Observable<any>;
   answer: string = '';
@@ -20,10 +20,7 @@ export class QuestionsComponent implements OnInit {
 
   constructor(private questionsService: QuestionsService,
               private route: ActivatedRoute) {
-    this.userId = this.route.snapshot.data.user.id;
-  }
-
-  ngOnInit(): void {
+    this.userId = this.route.parent?.snapshot.data.user.id;
   }
 
   startGame() {
