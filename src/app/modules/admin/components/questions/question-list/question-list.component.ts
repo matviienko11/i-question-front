@@ -3,9 +3,12 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Store } from '@ngrx/store';
 
 import { QuestionsService } from '../../../services/questions.service';
 import { Question } from '../../../../../shared/interfaces/question.interface';
+import { GetAllQuestions } from '../../../../../root-store/admin/questions/actions/questions.actions';
+import { SelectAllQuestions } from '../../../../../root-store/admin/questions/state/questions.selectors';
 
 @Component({
   selector: 'app-question-list',
@@ -23,7 +26,8 @@ export class QuestionListComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private questionsService: QuestionsService) {
+  constructor(private questionsService: QuestionsService,
+              private store: Store<any>) {
   }
 
   ngOnInit(): void {
@@ -31,7 +35,7 @@ export class QuestionListComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if(this.questions) {
+    if (this.questions) {
       this.questions.paginator = this.paginator;
     }
   }
@@ -43,12 +47,13 @@ export class QuestionListComponent implements OnInit, AfterViewInit {
   }
 
   private get Questions$() {
-    return this.questionsService.getAllQuestions(this.pageSize, this.page)
-      .pipe(
-        map(({ count, data }: any) => {
-          this.totalItems = count;
-          this.questions = new MatTableDataSource<any>(data);
-        })
+    this.store.dispatch(GetAllQuestions({ limit: this.pageSize, page: this.page }))
+    return this.store.pipe(
+      SelectAllQuestions,
+      map(({ count, data }: any) => {
+        this.totalItems = count;
+        this.questions = new MatTableDataSource<any>(data);
+      })
       )
   }
 
