@@ -9,3 +9,7 @@ export const GetAllQuestionsFailure = createAction(`[${ COMPONENT }] Get All Que
 export const AddQuestion = createAction(`[${ COMPONENT }] Add Question`, props<{ question: any }>());
 export const AddQuestionSuccess = createAction(`[${ COMPONENT }] Add Question Success`, props<{ question: any }>());
 export const AddQuestionFailure = createAction(`[${ COMPONENT }] Add Question Failure`, props<{ error: any }>());
+
+export const DeleteQuestion = createAction(`[${ COMPONENT }] Delete Question`, props<{ id: string }>());
+export const DeleteQuestionSuccess = createAction(`[${ COMPONENT }] Delete Question Success`, props<{ id: string }>());
+export const DeleteQuestionFailure = createAction(`[${ COMPONENT }] Delete Question Failure`, props<{ error: any }>());

@@ -1,14 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { map, switchMap } from 'rxjs/operators';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
 
 import { QuestionsService } from '../../../services/questions.service';
 import { Question } from '../../../../../shared/interfaces/question.interface';
-import { GetAllQuestions } from '../../../../../root-store/admin/questions/actions/questions.actions';
+import { DeleteQuestion, GetAllQuestions } from '../../../../../root-store/admin/questions/actions/questions.actions';
 import { SelectAllQuestions, SelectCount } from '../../../../../root-store/admin/questions/state/questions.selectors';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmModalComponent } from '../../../../../shared/components/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-question-list',
@@ -22,12 +24,13 @@ export class QuestionListComponent implements OnInit {
   pageSize: number = 5;
   totalItems: number;
   pageSizeOptions = [5, 10, 20];
-  displayedColumns = ['question', 'category', 'createdAt'];
+  displayedColumns = ['question', 'category', 'createdAt', 'actions'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private questionsService: QuestionsService,
-              private store: Store<any>) {
+              private store: Store<any>,
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -38,6 +41,20 @@ export class QuestionListComponent implements OnInit {
     this.page = pageIndex + 1;
     this.pageSize = pageSize;
     this.Questions$;
+  }
+
+  handleEdit() {
+
+  }
+
+  handleDelete(id: string) {
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      data: 'delete'
+    }).afterClosed()
+      .pipe(
+        filter(event => !!event),
+        map(() => this.store.dispatch(DeleteQuestion({ id })))
+      ).subscribe()
   }
 
   private get Questions$() {

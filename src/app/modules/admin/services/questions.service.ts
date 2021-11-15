@@ -20,4 +20,8 @@ export class QuestionsService {
   addQuestion(question: Question) {
     return this.http.post(environment.BASIC_URL + '/questions/new-question', question);
   }
+
+  deleteQuestion(id: string) {
+    return this.http.delete(environment.BASIC_URL + `/questions/${id}`)
+  }
 }
