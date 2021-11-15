@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { Store } from '@ngrx/store';
+
 import { QUESTION_CATEGORY } from '../../../../../shared/interfaces/question-category.interface';
 import { QuestionsService } from '../../../services/questions.service';
+import { AddQuestion } from '../../../../../root-store/admin/questions/actions/questions.actions';
 
 @Component({
   selector: 'app-question-form',
@@ -15,7 +18,8 @@ export class QuestionFormComponent implements OnInit {
   category = QUESTION_CATEGORY;
 
   constructor(private fb: FormBuilder,
-              private questionsService: QuestionsService) { }
+              private questionsService: QuestionsService,
+              private store: Store<any>) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -25,7 +29,7 @@ export class QuestionFormComponent implements OnInit {
   }
 
   createQuestion() {
-    this.questionsService.addQuestion(this.form.value).subscribe()
+    this.store.dispatch(AddQuestion({ question: this.form.value }))
     this.form.reset();
   }
 

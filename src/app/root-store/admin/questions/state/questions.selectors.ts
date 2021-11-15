@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector, select } from '@ngrx/store';
 import { pipe } from 'rxjs';
-import { filter, map, merge, mergeMap, tap, withLatestFrom } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 import { AdminQuestionsState } from './questions.state';
 import { selectAll } from '../reducers/questions.reducers';

@@ -1,19 +1,33 @@
-import { Action, createAction, createReducer, on } from '@ngrx/store';
-
-import { GetAllQuestions, GetAllQuestionsFailure, GetAllQuestionsSuccess } from '../actions/questions.actions';
+import { Action, createReducer, on } from '@ngrx/store';
 import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
 
-export const adapter: EntityAdapter<any> = createEntityAdapter<any>()
+import {
+  AddQuestion, AddQuestionFailure, AddQuestionSuccess,
+  GetAllQuestions,
+  GetAllQuestionsFailure,
+  GetAllQuestionsSuccess
+} from '../actions/questions.actions';
+import { Question } from '../../../../shared/interfaces/question.interface';
+
+export function sortByDate(a: Question, b: Question) {
+  const date1 = new Date(a.createdAt);
+  const date2 = new Date(b.createdAt);
+  return date2.getTime() - date1.getTime()
+}
+
+export const adapter: EntityAdapter<any> = createEntityAdapter<any>({
+  sortComparer: sortByDate
+});
 export const initialState = adapter.getInitialState();
 
 const reducer = createReducer(
   initialState,
-  on(GetAllQuestions, (state) => {
+  on(GetAllQuestions, AddQuestion, (state) => {
     return {
       ...state
     }
   }),
-  on(GetAllQuestionsFailure, (state, { error }) => {
+  on(GetAllQuestionsFailure, AddQuestionFailure, (state, { error }) => {
     return {
       ...state,
       error
@@ -26,6 +40,9 @@ const reducer = createReducer(
       page: questions.page,
       totalPages: questions.totalPages
     })
+  }),
+  on(AddQuestionSuccess, (state, { question }) => {
+    return adapter.addOne(question, { ...state })
   })
 )
 
