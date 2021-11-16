@@ -7,7 +7,7 @@ import { QuestionModalComponent } from '../question-modal/question-modal.compone
 import { UsersService } from '../../../services/users.service';
 
 @Component({
-  selector: 'app-question-table',
+  selector: 'app-admin-question-table',
   templateUrl: './question-table.component.html',
   styleUrls: ['./question-table.component.scss']
 })

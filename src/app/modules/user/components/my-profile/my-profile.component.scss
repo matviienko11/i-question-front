@@ -1,0 +1,46 @@
+.profile_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .register_info {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin: 30px 30px 0 0;
+  }
+
+  .form {
+    width: 70%;
+    padding: 20px;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+
+    &__group {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      &__item {
+        width: 45%;
+      }
+    }
+  }
+
+  .questions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .mat-tab-group {
+      width: 85%;
+
+      ::ng-deep .mat-tab-label {
+        width: 50%;
+      }
+    }
+  }
+}

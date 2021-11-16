@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="questions" class="mat-elevation-z8" *ngIf="questions.length; else empty" style="width: 100%">
+<table mat-table [dataSource]="questions" class="table" *ngIf="questions.length; else empty">
 
   <ng-container matColumnDef="question">
     <th mat-header-cell *matHeaderCellDef> Question </th>
