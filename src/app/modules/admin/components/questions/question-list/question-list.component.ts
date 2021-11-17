@@ -29,7 +29,7 @@ export class QuestionListComponent implements OnInit {
   pageSize: number = 5;
   totalItems: number;
   pageSizeOptions = [5, 10, 20];
-  displayedColumns = ['question', 'category', 'createdAt', 'actions'];
+  displayedColumns = ['question', 'category', 'difficulty', 'rating', 'createdAt', 'actions'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -83,6 +83,10 @@ export class QuestionListComponent implements OnInit {
           })
         )
       }))
+  }
+
+  handle(row: any) {
+    console.log(row);
   }
 
 }
