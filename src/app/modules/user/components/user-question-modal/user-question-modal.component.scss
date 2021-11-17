@@ -1,0 +1,15 @@
+.select_item {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  &__label {
+    width: 30%;
+    padding-bottom: 20px;
+  }
+  .mat-form-field {
+    margin-left: 10%;
+  }
+  ::ng-deep .mat-form-field-infix {
+    padding: 5px 0 10px 0;
+  }
+}

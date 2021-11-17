@@ -19,7 +19,8 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
 import { QuestionsComponent } from './components/questions/questions.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UserQuestionTableComponent } from './components/user-question-table/user-question-table.component';
-import { QuestionEvaluateModalComponent } from './components/question-evaluate-modal/question-evaluate-modal.component';
+import { UserQuestionModalComponent } from './components/user-question-modal/user-question-modal.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -31,7 +32,7 @@ import { QuestionEvaluateModalComponent } from './components/question-evaluate-m
     QuestionsComponent,
     DashboardComponent,
     UserQuestionTableComponent,
-    QuestionEvaluateModalComponent
+    UserQuestionModalComponent
   ],
   imports: [
     CommonModule,
@@ -47,6 +48,7 @@ import { QuestionEvaluateModalComponent } from './components/question-evaluate-m
     ReactiveFormsModule,
     MatTabsModule,
     MatListModule,
+    MatSelectModule,
   ]
 })
 export class UserModule {

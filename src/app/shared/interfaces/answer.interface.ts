@@ -8,6 +8,8 @@ export interface Answer {
   answer: string;
   question: Question;
   status: Status;
+  difficulty: number;
+  rating: number;
   createdAt: string;
   updatedAt: string;
 }

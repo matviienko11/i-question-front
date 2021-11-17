@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { Answer } from '../../../../shared/interfaces/answer.interface';
-import { QuestionEvaluateModalComponent } from '../question-evaluate-modal/question-evaluate-modal.component';
+import { UserQuestionModalComponent } from '../user-question-modal/user-question-modal.component';
 
 @Component({
   selector: 'app-user-question-table',
@@ -14,14 +14,17 @@ export class UserQuestionTableComponent implements OnInit {
 
   @Input() questions: any[];
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
   }
 
   showEvaluateModal(answer: Answer) {
-    const dialogRef = this.dialog.open(QuestionEvaluateModalComponent, {
-      data: answer
+    const dialogRef = this.dialog.open(UserQuestionModalComponent, {
+      data: answer,
+      width: '50%',
+      height: '50%'
     })
   }
 

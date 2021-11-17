@@ -1,0 +1,22 @@
+<div>
+  <p>Question: {{ answer.question.question }}</p>
+  <small>Answer: {{ answer.answer }}</small>
+  <form [formGroup]="form">
+    <div class="select_item">
+      <div class="select_item__label">Choose difficulty level:</div>
+      <mat-form-field appearance="outline">
+        <mat-select formControlName="difficulty">
+          <mat-option *ngFor="let item of ratingSelection" [value]="item.value">{{item.value}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="select_item">
+      <div class="select_item__label">Choose rating level:</div>
+      <mat-form-field appearance="outline">
+        <mat-select formControlName="rating">
+          <mat-option *ngFor="let item of ratingSelection" [value]="item.value">{{item.value}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+</div>

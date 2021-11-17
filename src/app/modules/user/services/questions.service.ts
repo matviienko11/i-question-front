@@ -35,4 +35,8 @@ export class QuestionsService {
   getAllAnsweredQuestions(userId: string) {
     return this.http.get(environment.BASIC_URL + `/user-question/all-answers/${ userId }/answered`)
   }
+
+  setStat(userId: string, questionId: string, payload: any) {
+    return this.http.patch(environment.BASIC_URL + `/user-question/${ userId }/set-stat/${ questionId }`, payload)
+  }
 }
