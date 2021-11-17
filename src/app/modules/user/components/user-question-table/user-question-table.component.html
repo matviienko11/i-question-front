@@ -1,12 +1,12 @@
 <div>
   <mat-list role="list">
     <mat-list-item role="listitem">
-      <div style="width: 30%">Question</div>
-      <div style="width: 30%">Answer</div>
+      <div class="list_item">Question</div>
+      <div class="list_item">Answer</div>
     </mat-list-item>
-    <mat-list-item role="listitem" *ngFor="let item of questions">
-      <div style="width: 30%">{{ item.question.question }}</div>
-      <small style="width: 30%">{{ item.answer }}</small>
+    <mat-list-item role="listitem" *ngFor="let item of questions" (click)="showEvaluateModal(item)">
+      <div class="list_item">{{ item.question.question }}</div>
+      <small class="list_item">{{ item.answer }}</small>
     </mat-list-item>
   </mat-list>
 </div>
