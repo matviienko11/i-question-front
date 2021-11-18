@@ -7,7 +7,6 @@ import { Store } from '@ngrx/store';
 
 import { User } from '../../../../shared/interfaces/user.interface';
 import { Answer } from '../../../../shared/interfaces/answer.interface';
-import { GetAllQuestions } from '../../../../root-store/user/all-questions/actions/all-questions.actions';
 import { SelectAllAnsweredQuestions, SelectAllPendingQuestions } from '../../../../root-store/user/all-questions/state/all-questions.selectors';
 
 @Component({
@@ -26,7 +25,6 @@ export class MyProfileComponent implements OnInit {
               private fb: FormBuilder,
               private store: Store<any>) {
     this.user = this.route.parent?.snapshot.data.user;
-    this.store.dispatch(GetAllQuestions({ userId: this.user.id }));
   }
 
   ngOnInit(): void {
