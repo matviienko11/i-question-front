@@ -5,7 +5,12 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 import { QuestionsService } from '../../../../modules/user/services/questions.service';
-import { GetAllQuestions, GetAllQuestionsFailure, GetAllQuestionsSuccess } from '../actions/all-questions.actions';
+import {
+  GetAllQuestions,
+  GetAllQuestionsFailure,
+  GetAllQuestionsSuccess,
+  UpdateQuestion, UpdateQuestionFailure, UpdateQuestionSuccess
+} from '../actions/all-questions.actions';
 
 @Injectable()
 export class AllQuestionsEffects {
@@ -20,6 +25,17 @@ export class AllQuestionsEffects {
         .pipe(
           map((questions) => GetAllQuestionsSuccess({ questions })),
           catchError(error => of(GetAllQuestionsFailure({ error })))
+        ))
+    )
+  })
+
+  updateQuestion$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(UpdateQuestion),
+      switchMap(({ userId, questionId, payload }) => this.questionsService.setStat(userId, questionId, payload)
+        .pipe(
+          map((question) => UpdateQuestionSuccess({ question })),
+          catchError(error => of(UpdateQuestionFailure({ error })))
         ))
     )
   })

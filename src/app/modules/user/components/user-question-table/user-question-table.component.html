@@ -1,12 +1,13 @@
 <div>
   <mat-list role="list">
-    <mat-list-item role="listitem">
+    <mat-list-item role="listitem" class="list_header">
       <div class="list_item">Question</div>
       <div class="list_item">Answer</div>
       <div class="list_item">Difficulty</div>
       <div class="list_item">Rating</div>
     </mat-list-item>
-    <mat-list-item role="listitem" *ngFor="let item of questions" (click)="showEvaluateModal(item)">
+    <mat-divider></mat-divider>
+    <mat-list-item role="listitem" class="list_item_group" *ngFor="let item of questions" (click)="showEvaluateModal(item)">
       <div class="list_item">{{ item.question.question }}</div>
       <div class="list_item">{{ item.answer }}</div>
       <div class="list_item">{{ item.question.average_difficulty }}</div>

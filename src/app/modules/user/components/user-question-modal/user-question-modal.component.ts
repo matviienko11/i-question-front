@@ -2,11 +2,12 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 
 import { Answer } from '../../../../shared/interfaces/answer.interface';
 import { RATING } from '../../../../shared/interfaces/rating.interface';
-import { QuestionsService } from '../../services/questions.service';
+import { UpdateQuestion } from '../../../../root-store/user/all-questions/actions/all-questions.actions';
 
 @Component({
   selector: 'app-question-evaluate-modal',
@@ -21,7 +22,8 @@ export class UserQuestionModalComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Answer,
               private fb: FormBuilder,
-              private questionsService: QuestionsService) { }
+              private store: Store<any>) {
+  }
 
   ngOnInit(): void {
     this.answer = this.data;
@@ -30,8 +32,11 @@ export class UserQuestionModalComponent implements OnInit {
       rating: [this.answer.rating],
     })
     this.form.valueChanges.pipe(
-      switchMap((data) => this.questionsService.setStat(this.answer.userId, this.answer.questionId, data)
+      map((payload: any) => this.store.dispatch(UpdateQuestion({
+          userId: this.answer.userId,
+          questionId: this.answer.questionId,
+          payload
+        }))
       )).subscribe()
-
-
-}}
+  }
+}

@@ -1,26 +1,40 @@
 import { Action, createReducer, on } from '@ngrx/store';
-
-import { GetAllQuestions, GetAllQuestionsFailure, GetAllQuestionsSuccess } from '../actions/all-questions.actions';
 import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
+
+import {
+  GetAllQuestions,
+  GetAllQuestionsFailure,
+  GetAllQuestionsSuccess,
+  UpdateQuestion, UpdateQuestionFailure, UpdateQuestionSuccess
+} from '../actions/all-questions.actions';
 
 export const adapter: EntityAdapter<any> = createEntityAdapter<any>({});
 export const initialState = adapter.getInitialState();
 
 const reducer = createReducer(
   initialState,
-  on(GetAllQuestions, (state) => {
-    return {
-      ...state
-    }
-  }),
-  on(GetAllQuestionsFailure, (state, { error }) => {
-    return {
-      ...state,
-      error
-    }
-  }),
+  on(
+    GetAllQuestions,
+    UpdateQuestion,
+    (state) => {
+      return {
+        ...state
+      }
+    }),
+  on(
+    GetAllQuestionsFailure,
+    UpdateQuestionFailure,
+    (state, { error }) => {
+      return {
+        ...state,
+        error
+      }
+    }),
   on(GetAllQuestionsSuccess, (state, { questions }) => {
     return adapter.setAll(questions, { ...state })
+  }),
+  on(UpdateQuestionSuccess, (state, { question }) => {
+    return adapter.upsertOne(question, state)
   })
 )
 

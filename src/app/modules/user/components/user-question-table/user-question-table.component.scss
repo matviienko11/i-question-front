@@ -1,3 +1,13 @@
+.list_header {
+  margin-top: 30px;
+}
+
 .list_item {
   width: 30%;
+}
+
+.list_item_group:hover {
+  cursor: pointer;
+  background-color: gray;
+  color: white;
 }
