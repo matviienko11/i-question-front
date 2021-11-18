@@ -1,0 +1,18 @@
+.question_page_wrapper {
+  width: 90vw;
+
+  .add_group {
+    margin: 30px 20px 0 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .mat-icon {
+      margin-left: 15px;
+    }
+
+    .mat-icon:hover {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,24 +1,12 @@
-.question_form_wrapper {
-  width: 90vw;
+.textarea {
+  width: 100%;
+
+  .mat-input-element {
+    height: 90px;
+  }
+}
+
+.button {
   display: flex;
   justify-content: center;
-
-  .form {
-    width: 60%;
-    margin: 30px;
-    padding: 20px;
-    border-radius: 15px;
-
-    &__textarea {
-      width: 100%;
-      .mat-input-element {
-          height: 90px;
-        }
-    }
-
-    &__button {
-      display: flex;
-      justify-content: center;
-    }
-  }
 }

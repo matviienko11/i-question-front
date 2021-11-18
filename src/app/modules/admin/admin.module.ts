@@ -43,7 +43,7 @@ import { EditModalComponent } from './components/questions/edit-modal/edit-modal
     UserListComponent,
     QuestionTableComponent,
     QuestionModalComponent,
-    EditModalComponent
+    EditModalComponent,
   ],
   imports: [
     CommonModule,

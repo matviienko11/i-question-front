@@ -1,17 +1,19 @@
 <div class="question_form_wrapper">
-  <form class="form mat-elevation-z8" [formGroup]="form" (ngSubmit)="createQuestion()">
+  <form [formGroup]="form">
     <mat-form-field appearance="outline">
       <mat-label>Select Category</mat-label>
       <mat-select formControlName="category">
         <mat-option *ngFor="let item of category" [value]="item.value">{{item.text}}</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field class="form__textarea" appearance="outline">
+    <mat-form-field class="textarea" appearance="outline">
       <mat-label>Question</mat-label>
       <textarea matInput formControlName="question"></textarea>
     </mat-form-field>
-    <div class="form__button">
-      <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Create</button>
+    <div class="button">
+      <button type="button" mat-raised-button color="primary" [disabled]="form.invalid" (click)="createQuestion()">
+        Create
+      </button>
     </div>
   </form>
 </div>
