@@ -3,10 +3,14 @@
     <mat-list-item role="listitem">
       <div class="list_item">Question</div>
       <div class="list_item">Answer</div>
+      <div class="list_item">Difficulty</div>
+      <div class="list_item">Rating</div>
     </mat-list-item>
     <mat-list-item role="listitem" *ngFor="let item of questions" (click)="showEvaluateModal(item)">
       <div class="list_item">{{ item.question.question }}</div>
-      <small class="list_item">{{ item.answer }}</small>
+      <div class="list_item">{{ item.answer }}</div>
+      <div class="list_item">{{ item.question.average_difficulty }}</div>
+      <div class="list_item">{{ item.question.average_rating }}</div>
     </mat-list-item>
   </mat-list>
 </div>

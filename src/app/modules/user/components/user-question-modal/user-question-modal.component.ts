@@ -1,12 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { switchMap } from 'rxjs/operators';
 
 import { Answer } from '../../../../shared/interfaces/answer.interface';
 import { RATING } from '../../../../shared/interfaces/rating.interface';
 import { QuestionsService } from '../../services/questions.service';
-import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-question-evaluate-modal',
@@ -20,7 +20,6 @@ export class UserQuestionModalComponent implements OnInit {
   form: FormGroup;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Answer,
-              public dialogRef: MatDialogRef<UserQuestionModalComponent>,
               private fb: FormBuilder,
               private questionsService: QuestionsService) { }
 

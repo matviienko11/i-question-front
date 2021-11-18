@@ -12,7 +12,7 @@ import { UserQuestionModalComponent } from '../user-question-modal/user-question
 })
 export class UserQuestionTableComponent implements OnInit {
 
-  @Input() questions: any[];
+  @Input() questions: Answer[];
 
   constructor(private dialog: MatDialog) {
   }
