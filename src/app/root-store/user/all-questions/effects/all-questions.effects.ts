@@ -16,7 +16,7 @@ export class AllQuestionsEffects {
   getAllQuestion$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(GetAllQuestions),
-      switchMap(() => this.questionsService.getAllQuestions()
+      switchMap(({ userId }) => this.questionsService.getAllQuestionsByUser(userId)
         .pipe(
           map((questions) => GetAllQuestionsSuccess({ questions })),
           catchError(error => of(GetAllQuestionsFailure({ error })))

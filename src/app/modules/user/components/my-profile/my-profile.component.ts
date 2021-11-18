@@ -2,8 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+
 import { User } from '../../../../shared/interfaces/user.interface';
 import { Answer } from '../../../../shared/interfaces/answer.interface';
+import { GetAllQuestions } from '../../../../root-store/user/all-questions/actions/all-questions.actions';
+import { SelectAllAnsweredQuestions, SelectAllPendingQuestions } from '../../../../root-store/user/all-questions/state/all-questions.selectors';
 
 @Component({
   selector: 'app-my-profile',
@@ -13,18 +18,20 @@ import { Answer } from '../../../../shared/interfaces/answer.interface';
 export class MyProfileComponent implements OnInit {
 
   user: User;
-  pending: Answer[];
-  answered: Answer[];
+  pending$: Observable<Answer[]>;
+  answered$: Observable<Answer[]>;
   form: FormGroup;
 
   constructor(private route: ActivatedRoute,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private store: Store<any>) {
     this.user = this.route.parent?.snapshot.data.user;
-    this.pending = this.route.snapshot.data.questions.pending;
-    this.answered = this.route.snapshot.data.questions.answered;
+    this.store.dispatch(GetAllQuestions({ userId: this.user.id }));
   }
 
   ngOnInit(): void {
+    this.pending$ = this.store.pipe(SelectAllPendingQuestions);
+    this.answered$ = this.store.pipe(SelectAllAnsweredQuestions);
     this.form = this.fb.group({
       first_name: [this.user.first_name],
       last_name: [this.user.last_name],

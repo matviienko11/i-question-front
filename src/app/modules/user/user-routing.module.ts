@@ -6,7 +6,6 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
 import { UserResolver } from './resolvers/user.resolver';
 import { QuestionsComponent } from './components/questions/questions.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { UserQuestionResolver } from './resolvers/user-question.resolver';
 
 const routes: Routes = [
   {
@@ -17,7 +16,6 @@ const routes: Routes = [
       {
         path: 'my-profile',
         component: MyProfileComponent,
-        resolve: { questions: UserQuestionResolver }
       },
       {
         path: 'dashboard',
@@ -30,15 +28,13 @@ const routes: Routes = [
       { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },
     ]
   },
-
 ]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
   providers: [
-    UserResolver,
-    UserQuestionResolver
+    UserResolver
   ]
 })
 export class UserRoutingModule {

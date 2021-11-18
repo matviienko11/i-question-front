@@ -1,8 +1,10 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
 import { GetAllQuestions, GetAllQuestionsFailure, GetAllQuestionsSuccess } from '../actions/all-questions.actions';
+import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
 
-export const initialState = {};
+export const adapter: EntityAdapter<any> = createEntityAdapter<any>({});
+export const initialState = adapter.getInitialState();
 
 const reducer = createReducer(
   initialState,
@@ -18,12 +20,11 @@ const reducer = createReducer(
     }
   }),
   on(GetAllQuestionsSuccess, (state, { questions }) => {
-    return {
-      ...state,
-      questions
-    }
+    return adapter.setAll(questions, { ...state })
   })
 )
+
+export const { selectAll } = adapter.getSelectors()
 
 export function allQuestionsReducer(state: any | undefined, action: Action) {
   return reducer(state, action);

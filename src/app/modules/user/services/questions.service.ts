@@ -28,6 +28,10 @@ export class QuestionsService {
     return this.http.patch(environment.BASIC_URL + `/user-question/${ userId }/pending/${ questionId }`, { answer })
   }
 
+  getAllQuestionsByUser(userId: string) {
+    return this.http.get(environment.BASIC_URL + `/user-question/all-answers/${ userId }`)
+  }
+
   getAllPendingQuestions(userId: string) {
     return this.http.get(environment.BASIC_URL + `/user-question/all-answers/${ userId }/pending`)
   }

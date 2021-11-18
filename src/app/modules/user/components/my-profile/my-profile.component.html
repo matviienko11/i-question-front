@@ -32,10 +32,10 @@
   <div class="questions">
     <mat-tab-group>
       <mat-tab label="Pending">
-        <app-user-question-table [questions]="pending"></app-user-question-table>
+        <app-user-question-table [questions]="pending$ | async"></app-user-question-table>
       </mat-tab>
       <mat-tab label="Answered">
-        <app-user-question-table [questions]="answered"></app-user-question-table>
+        <app-user-question-table [questions]="answered$ | async"></app-user-question-table>
       </mat-tab>
     </mat-tab-group>
   </div>
