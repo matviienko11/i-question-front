@@ -26,7 +26,7 @@ export class QuestionsEffects {
   getAllQuestions$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(GetAllQuestions),
-      switchMap(({ limit, page }) => this.questionsService.getAllQuestions(limit, page)
+      switchMap(({ limit, page, dir, search }) => this.questionsService.getAllQuestions(limit, page, dir, search)
         .pipe(
           map(questions => GetAllQuestionsSuccess({ questions })),
           catchError(error => of(GetAllQuestionsFailure({ error })))

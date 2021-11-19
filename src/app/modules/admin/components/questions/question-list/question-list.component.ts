@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 import { filter, map, switchMap } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSort } from '@angular/material/sort';
 
 import { QuestionsService } from '../../../services/questions.service';
 import { Question } from '../../../../../shared/interfaces/question.interface';
@@ -28,10 +29,18 @@ export class QuestionListComponent implements OnInit {
   page: number = 1;
   pageSize: number = 5;
   totalItems: number;
+  sortField: string;
+  sortDir: string;
+  searchValue: string;
+  @Input() set search(value: string) {
+    this.searchValue = value;
+    this.Questions$;
+  };
   pageSizeOptions = [5, 10, 20];
   displayedColumns = ['question', 'category', 'difficulty', 'rating', 'createdAt', 'actions'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sorting: MatSort;
 
   constructor(private questionsService: QuestionsService,
               private store: Store<any>,
@@ -71,7 +80,7 @@ export class QuestionListComponent implements OnInit {
   }
 
   private get Questions$() {
-    this.store.dispatch(GetAllQuestions({ limit: this.pageSize, page: this.page }))
+    this.store.dispatch(GetAllQuestions({ limit: this.pageSize, page: this.page, dir: this.sortDir, search: this.searchValue }))
     return this.store.pipe(
       SelectAllQuestions,
       switchMap((questions: any) => {
@@ -89,4 +98,9 @@ export class QuestionListComponent implements OnInit {
     console.log(row);
   }
 
+  sort({active, direction}: any) {
+    this.sortField = active;
+    this.sortDir = direction;
+    this.Questions$;
+  }
 }

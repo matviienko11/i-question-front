@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -29,6 +29,8 @@ import { UsersService } from './services/users.service';
 import { DashboardService } from './services/dashboard.service';
 import { QuestionsService } from './services/questions.service';
 import { EditModalComponent } from './components/questions/edit-modal/edit-modal.component';
+import { MatSortModule } from '@angular/material/sort';
+import { SearchComponent } from './components/questions/search/search.component';
 
 
 @NgModule({
@@ -44,6 +46,7 @@ import { EditModalComponent } from './components/questions/edit-modal/edit-modal
     QuestionTableComponent,
     QuestionModalComponent,
     EditModalComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,
@@ -59,7 +62,9 @@ import { EditModalComponent } from './components/questions/edit-modal/edit-modal
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSortModule,
+    FormsModule
   ],
   providers: [
     DashboardService,

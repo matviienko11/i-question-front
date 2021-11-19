@@ -15,15 +15,22 @@ import { AddQuestion } from '../../../../../root-store/admin/questions/actions/q
         <div>Add question</div>
         <mat-icon (click)="showCreateModal()">add_circle_outline</mat-icon>
       </div>
-      <app-question-list></app-question-list>
+      <app-search (search)="handleSearch($event)"></app-search>
+      <app-question-list [search]="search"></app-question-list>
     </div>
   `,
   styleUrls: ['./question-page.component.scss']
 })
 export class QuestionPageComponent {
 
+  search: string;
+
   constructor(private dialog: MatDialog,
               private store: Store<any>) {
+  }
+
+  handleSearch(value: any) {
+    this.search = value;
   }
 
   showCreateModal() {
@@ -35,5 +42,4 @@ export class QuestionPageComponent {
         )
       ).subscribe()
   }
-
 }

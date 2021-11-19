@@ -9,10 +9,12 @@ export class QuestionsService {
   constructor(private http: HttpClient) {
   }
 
-  getAllQuestions(limit: number, page: number) {
+  getAllQuestions(limit: number, page: number, dir: string = 'asc', search: string = '') {
     const params = {
       limit,
-      page
+      page,
+      search,
+      question: dir
     }
     return this.http.get(environment.BASIC_URL + '/questions/paginated', { params })
   }

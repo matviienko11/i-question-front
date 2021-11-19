@@ -15,14 +15,14 @@ import {
 } from '../actions/questions.actions';
 import { Question } from '../../../../shared/interfaces/question.interface';
 
-export function sortByDate(a: Question, b: Question) {
-  const date1 = new Date(a.createdAt);
-  const date2 = new Date(b.createdAt);
-  return date2.getTime() - date1.getTime()
-}
+// export function sortByDate(a: Question, b: Question) {
+//   const date1 = new Date(a.createdAt);
+//   const date2 = new Date(b.createdAt);
+//   return date2.getTime() - date1.getTime()
+// }
 
 export const adapter: EntityAdapter<any> = createEntityAdapter<any>({
-  sortComparer: sortByDate
+  // sortComparer: sortByDate
 });
 export const initialState = adapter.getInitialState();
 
