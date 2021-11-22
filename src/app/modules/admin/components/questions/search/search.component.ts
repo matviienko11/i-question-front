@@ -6,8 +6,8 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 @Component({
   selector: 'app-search',
   template: `
-    <div>
-      <mat-form-field class="example-full-width" appearance="outline">
+    <div class="search">
+      <mat-form-field appearance="outline">
         <mat-label>Search</mat-label>
         <input matInput [formControl]="searchControl">
       </mat-form-field>
