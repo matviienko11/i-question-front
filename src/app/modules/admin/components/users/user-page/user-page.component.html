@@ -1,4 +1,5 @@
 <div class="user_page">
+  <img src="api/users/profile-image/{{user.profile_image}}" alt="img">
   <form [formGroup]="form" class="user_page__form">
 
     <div class="user_page__form__group">
@@ -28,9 +29,11 @@
 
   Pending:
   <br>
-  <app-admin-question-table class="user_page__table" [questions]="pending" [approvable]="true" [userId]="user.id"></app-admin-question-table>
+  <app-admin-question-table class="user_page__table" [questions]="pending" [approvable]="true"
+                            [userId]="user.id"></app-admin-question-table>
   <br>
   Answered:
   <br>
-  <app-admin-question-table class="user_page__table" [questions]="answered" [userId]="user.id"></app-admin-question-table>
+  <app-admin-question-table class="user_page__table" [questions]="answered"
+                            [userId]="user.id"></app-admin-question-table>
 </div>
